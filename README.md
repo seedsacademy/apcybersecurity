@@ -8,7 +8,7 @@ The roadmap follows the five units in the [College Board Course and Exam Descrip
 
 Each row is a separate class topic to develop. A topic may take multiple meetings for instruction, practice, and assessment. This is a course roadmap, not a plan to complete the full course in 30 periods. Adjust pacing to the schedule and student needs.
 
-**Existing lessons:** [Introduction to pandas](sample_0/README.md) (warm-up) and [Data Analysis: Trace Login and Firewall Events](sample_1/README.md). All other classes below are planned.
+**Existing lessons:** [Class 01: Recognize social engineering](class_01_social_engineering/README.md), [Introduction to pandas](sample_0/README.md) (warm-up), and [Data Analysis: Trace Login and Firewall Events](sample_1/README.md). All other classes below are planned.
 
 ## Separate class topics
 
@@ -16,7 +16,7 @@ Each row is a separate class topic to develop. A topic may take multiple meeting
 
 | Class | Class topic | CED topic | Activity and student deliverable |
 | --- | --- | --- | --- |
-| 01 | Recognize social engineering | 1.1 | Annotate fictional messages; explain the tactic, consequence, and safe response. |
+| 01 | [Recognize social engineering](class_01_social_engineering/README.md) — ready | 1.1 | Annotate fictional messages; explain the tactic, consequence, and safe response. |
 | 02 | Investigate suspicious logins | 1.2 | Compare login histories and recommend account protections. |
 | 03 | Make decisions on public Wi-Fi | 1.3 | Evaluate a travel scenario and create a connection checklist. |
 | 04 | Recognize AI-assisted deception | 1.4 | Evaluate an impersonation request and design independent verification. |

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "CASE-101",
+    "title": "The Panicked Password Reset",
+    "channel": "Email",
+    "sender_display": "School District IT Support <support@district-helpdesk.org>",
+    "actual_sender": "admin@district-he1pdesk.org",
+    "recipient": "all-students@lincolnhigh.edu",
+    "subject": "CRITICAL NOTICE: Account suspension within 1 hour — Verify password now",
+    "timestamp": "2026-10-02 07:42:15 UTC",
+    "body": "Dear Student,\n\nOur automated security monitors detected multiple illegal login attempts from an unknown device in an overseas location. Due to district policy, your school email and cloud storage account will be PERMANENTLY DELETED in 60 minutes unless you verify your identity.\n\nClick the link below immediately to keep your account active:\nhttp://lincoln-verify.secure-login-portal.net/auth\n\nEnter your current student ID and existing password. If you do not complete this within 60 minutes, all your homework and school files will be erased.\n\nSincerely,\nDistrict IT Security Team",
+    "red_flags": [
+      "Extreme urgency and threat of punishment (60 minutes, account erased)",
+      "Lookalike domain in sender address (district-he1pdesk.org with a '1' instead of an 'l')",
+      "Suspicious external link (secure-login-portal.net instead of lincolnhigh.edu)",
+      "Generic greeting ('Dear Student' instead of your actual name)",
+      "Real IT departments never ask you to reveal or type your password into an unverified link"
+    ],
+    "psychological_triggers": [
+      "Fear / Intimidation",
+      "Urgency / Time pressure",
+      "Authority (posing as District IT)"
+    ],
+    "attack_type": "Phishing (Deceptive Email)",
+    "potential_consequence": "Credential harvesting / Account takeover. The attacker gains the student's password and access to school files.",
+    "safe_response": "Do NOT click the link. Report the email using the school's phishing report button or forward it directly to the verified school help desk address. Check account status directly on the official district portal."
+  },
+  {
+    "id": "CASE-102",
+    "title": "The Principal's Secret Gift Card Request",
+    "channel": "SMS / Text Message",
+    "sender_display": "+1 (555) 019-4821",
+    "actual_sender": "+1 (555) 019-4821 (Unknown mobile carrier)",
+    "recipient": "+1 (555) 012-7734 (Student Council Treasurer)",
+    "subject": "N/A (SMS)",
+    "timestamp": "2026-10-02 11:15:02 UTC",
+    "body": "Hi, this is Principal Martinez. I am stuck in an all-day emergency district board meeting and my phone can only send texts. I need to reward our guest speakers right now with four $50 Apple gift cards. Can you run to the store near school, buy them with student council funds, scratch off the back, and text me photos of the codes? I will reimburse you first thing tomorrow morning. Please hurry, the presentation is ending soon!",
+    "red_flags": [
+      "Unknown phone number claiming to be a school authority",
+      "Request for gift cards as payment or reimbursement (classic scam indicator)",
+      "Asking for secrecy or bypassing standard school financial reimbursement rules",
+      "High urgency ('Please hurry', 'presentation ending soon')",
+      "Convenient excuse why they cannot talk on the phone or meet in person"
+    ],
+    "psychological_triggers": [
+      "Authority (Posing as school principal)",
+      "Urgency / Time pressure",
+      "Helpfulness / Social compliance"
+    ],
+    "attack_type": "Smishing (SMS Phishing) & Impersonation / Pretexting",
+    "potential_consequence": "Direct financial theft. Once gift card codes are sent, the money is gone instantly with zero recourse.",
+    "safe_response": "Do NOT buy any gift cards or send codes. Perform out-of-band verification: contact the school main office directly or speak to Principal Martinez in person using official school directory info."
+  },
+  {
+    "id": "CASE-103",
+    "title": "The Robotics Team Sponsorship Invoice",
+    "channel": "Targeted Email (Spear Phishing)",
+    "sender_display": "Sarah Chen <s.chen@apex-robotics-supply.com>",
+    "actual_sender": "s.chen@apex-rob0tics-supply.com",
+    "recipient": "robotics-lead@lincolnhigh.edu",
+    "subject": "Lincoln High Robotics — Updated Shipping Invoice #8841 for VEX Parts",
+    "timestamp": "2026-10-02 14:02:18 UTC",
+    "body": "Hi Maya,\n\nGreat job at the regional qualifiers last Saturday! We loved watching team 4041's autonomous run.\n\nWe have prepared your shipment for the additional V5 smart motors and omni-wheels you requested. Please review the attached invoice (Shipping_Invoice_8841.pdf.exe) and confirm your shipping dock address so we can release the crate by 4 PM today.\n\nBest regards,\nSarah Chen\nAccount Manager, Apex Robotics Supply",
+    "red_flags": [
+      "Double file extension hiding an executable file (Shipping_Invoice_8841.pdf.exe)",
+      "Lookalike vendor domain (apex-rob0tics-supply.com with a zero '0' instead of 'o')",
+      "Spear phishing research: uses real team name (Team 4041) and real names to build false trust",
+      "Artificial deadline ('release the crate by 4 PM today')"
+    ],
+    "psychological_triggers": [
+      "Familiarity / Liking (references real club events and compliments the team)",
+      "Authority / Business legitimacy",
+      "Urgency (4 PM cutoff)"
+    ],
+    "attack_type": "Spear Phishing with Malicious Attachment (Trojan / Malware Delivery)",
+    "potential_consequence": "Malware / Ransomware execution on the computer. Running the `.exe` file gives the hacker remote command access.",
+    "safe_response": "Do NOT download or double-click the attachment! Inspect the file extension. Verify the order with your club advisor and contact Apex Robotics through their verified website or phone number."
+  },
+  {
+    "id": "CASE-104",
+    "title": "The Friendly IT Help Desk Call",
+    "channel": "Voice Call / Audio (Vishing Transcript)",
+    "sender_display": "Caller ID: 'District Telecom' <+1 555-014-9900>",
+    "actual_sender": "Spoofed Caller ID via VoIP trunk",
+    "recipient": "School Library Staff Workstation",
+    "subject": "Incoming Phone Call",
+    "timestamp": "2026-10-02 15:30:00 UTC",
+    "body": "CALLER: 'Hello! This is Kevin from the District Technology Help Desk. We're pushing an emergency security patch to fix the Wi-Fi slowness in the library. I have your computer pulled up on my screen right now, but our automated tool requires you to authorize the connection.\n\nI just sent a 6-digit verification code to your phone. Could you read that 6-digit number back to me so I can finalize the Wi-Fi update and get you back to work?'\n\nSTAFF MEMBER: 'Oh, sure, let me check my text messages...'",
+    "red_flags": [
+      "Caller is asking for a one-time multi-factor authentication (MFA) passcode over the phone",
+      "Spoofed caller ID (displays trusted text 'District Telecom')",
+      "Quid pro quo pretext: offers to 'fix your slow Wi-Fi' in exchange for security credentials",
+      "Unsolicited call from someone claiming to be IT support"
+    ],
+    "psychological_triggers": [
+      "Helpfulness (offering to fix a frustrating issue)",
+      "Authority (posing as official District Help Desk)",
+      "Social engineering elicitation"
+    ],
+    "attack_type": "Vishing (Voice Phishing) / MFA Fatigue & Session Hijacking",
+    "potential_consequence": "MFA Bypass. The caller is actively logging into the account and needs the victim to read them the second factor code.",
+    "safe_response": "NEVER share one-time passcodes or MFA codes over the phone or in chat! Legitimate IT staff will NEVER ask for your MFA code. Hang up, look up the official Help Desk extension on the school website, and call them directly to verify."
+  },
+  {
+    "id": "CASE-105",
+    "title": "The Golden USB in the Parking Lot",
+    "channel": "Physical Dropped Media (Baiting)",
+    "sender_display": "Physical USB Flash Drive",
+    "actual_sender": "Unknown physical attacker",
+    "recipient": "Dropped on ground near the high school cafeteria entrance",
+    "subject": "Label: 'STAFF_SALARY_2026_CONFIDENTIAL.xlsx'",
+    "timestamp": "2026-10-02 12:10:00 UTC",
+    "body": "A student finds a sleek metal USB 3.0 flash drive lying on the picnic table outside the cafeteria. Stuck to the drive is a neon label that reads: 'AP EXAM ANSWERS & TEACHER GRADES 2026 - CONFIDENTIAL'. When plugged into a computer, it contains a file called 'Click_To_Open_Grades.vbs' and an auto-run configuration.",
+    "red_flags": [
+      "Unattended USB found in a public or semi-public location",
+      "Sensational, curiosity-inducing label ('CONFIDENTIAL', 'EXAM ANSWERS')",
+      "Contains executable script files (`.vbs`, `.bat`, or hidden executables) disguised as documents",
+      "Physical device bypassing network perimeter defenses"
+    ],
+    "psychological_triggers": [
+      "Curiosity / Scarcity",
+      "Greed / Temptation",
+      "Baiting"
+    ],
+    "attack_type": "Baiting (Physical Media Attack / Rubber Ducky)",
+    "potential_consequence": "Keystroke injection or instant malware infection upon plugging into a workstation.",
+    "safe_response": "NEVER plug unknown USB drives into any school or personal computer! Deliver the drive immediately to school IT or administration without plugging it in."
+  },
+  {
+    "id": "CASE-106",
+    "title": "The Official Library Book Due Reminder",
+    "channel": "Email",
+    "sender_display": "Lincoln High Library <library@lincolnhigh.edu>",
+    "actual_sender": "library@lincolnhigh.edu",
+    "recipient": "alex.rivera@lincolnhigh.edu",
+    "subject": "Library Notice: 'AP Computer Science Principles Prep' is due in 3 days",
+    "timestamp": "2026-10-02 16:00:12 UTC",
+    "body": "Hi Alex,\n\nThis is a friendly reminder from the Lincoln High Library that your borrowed book, 'AP Computer Science Principles Prep (Barcode #49012)', is due on Monday, October 5th.\n\nIf you need to renew your book, you can log in to your account through the school portal at https://library.lincolnhigh.edu or bring the book to the circulation desk before 3:30 PM.\n\nHave a great weekend!\nMrs. Gable, School Librarian",
+    "red_flags": [
+      "None! This is a legitimate message."
+    ],
+    "psychological_triggers": [
+      "Routine informational notice — no panic, no threats, no unusual urgency"
+    ],
+    "attack_type": "Legitimate (Benign)",
+    "potential_consequence": "None. Returning or renewing the library book keeps your account in good standing.",
+    "safe_response": "Recognize as legitimate: Sender domain matches official school address (@lincolnhigh.edu), link uses HTTPS with exact official domain, personal name and exact book barcode are correct, and no sensitive credentials or passwords are requested."
+  }
+]
