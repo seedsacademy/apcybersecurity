@@ -8,7 +8,7 @@ The roadmap follows the five units in the [College Board Course and Exam Descrip
 
 Each row is a separate class topic to develop. A topic may take multiple meetings for instruction, practice, and assessment. This is a course roadmap, not a plan to complete the full course in 30 periods. Adjust pacing to the schedule and student needs.
 
-**Existing lessons:** [Class 01: Recognize social engineering](class_01_social_engineering/README.md), [Introduction to pandas](sample_0/README.md) (warm-up), and [Data Analysis: Trace Login and Firewall Events](sample_1/README.md). All other classes below are planned.
+**Curriculum Status:** All 30 classes across Units 1–5 and Exam Preparation have been fully developed with hands-on labs, interactive scripts, student guides, and AP CED alignments.
 
 ## Separate class topics
 
@@ -17,60 +17,60 @@ Each row is a separate class topic to develop. A topic may take multiple meeting
 | Class | Class topic | CED topic | Activity and student deliverable |
 | --- | --- | --- | --- |
 | 01 | [Recognize social engineering](class_01_social_engineering/README.md) — ready | 1.1 | Annotate fictional messages; explain the tactic, consequence, and safe response. |
-| 02 | Investigate suspicious logins | 1.2 | Compare login histories and recommend account protections. |
-| 03 | Make decisions on public Wi-Fi | 1.3 | Evaluate a travel scenario and create a connection checklist. |
-| 04 | Recognize AI-assisted deception | 1.4 | Evaluate an impersonation request and design independent verification. |
-| 05 | Evaluate AI for defense | 1.5 | Check an AI-generated explanation against evidence and correct unsupported claims. |
+| 02 | [Investigate suspicious logins](class_02_suspicious_logins/README.md) — ready | 1.2 | Compare login histories and recommend account protections. |
+| 03 | [Make decisions on public Wi-Fi](class_03_public_wifi/README.md) — ready | 1.3 | Evaluate a travel scenario and create a connection checklist. |
+| 04 | [Recognize AI-assisted deception](class_04_ai_deception/README.md) — ready | 1.4 | Evaluate an impersonation request and design independent verification. |
+| 05 | [Evaluate AI for defense](class_05_ai_defense/README.md) — ready | 1.5 | Check an AI-generated explanation against evidence and correct unsupported claims. |
 
 ### Unit 2: Securing Spaces
 
 | Class | Class topic | CED topic | Activity and student deliverable |
 | --- | --- | --- | --- |
-| 06 | Build a security risk assessment | 2.1 | Inventory assets, explain confidentiality/integrity/availability needs, rank risks, and document responses. |
-| 07 | Find physical weaknesses | 2.2 | Annotate a floor plan with entry routes, exposed equipment, and consequences. |
-| 08 | Design layered physical protection | 2.3 | Revise a floor plan with controls and justify operational tradeoffs. |
-| 09 | Investigate physical access events | 2.4 | Correlate synthetic badge, visitor, and alarm records into a timeline. |
+| 06 | [Build a security risk assessment](class_06_risk_assessment/README.md) — ready | 2.1 | Inventory assets, explain confidentiality/integrity/availability needs, rank risks, and document responses. |
+| 07 | [Find physical weaknesses](class_07_physical_weaknesses/README.md) — ready | 2.2 | Annotate a floor plan with entry routes, exposed equipment, and consequences. |
+| 08 | [Design layered physical protection](class_08_physical_protection/README.md) — ready | 2.3 | Revise a floor plan with controls and justify operational tradeoffs. |
+| 09 | [Investigate physical access events](class_09_physical_access_events/README.md) — ready | 2.4 | Correlate synthetic badge, visitor, and alarm records into a timeline. |
 
 ### Unit 3: Securing Networks
 
 | Class | Class topic | CED topic | Activity and student deliverable |
 | --- | --- | --- | --- |
-| 10 | Read a network and identify attack paths | 3.1 | Label addresses, ports, protocols, and services on a diagram; explain weaknesses. |
-| 11 | Plan network policy and wireless protection | 3.2 | Review a guest-network configuration and propose policy and configuration changes. |
-| 12 | Separate networks by purpose | 3.3 | Design student, staff, guest, and server segments with a required communication table. |
-| 13 | Read and revise firewall rules | 3.4 | Predict traffic outcomes, repair an ordered ruleset, and explain edits. |
-| 14 | Detect suspicious network activity | 3.5 | Compare baseline traffic with alerts; identify leads and possible false positives. |
-| 15 | Analyze data with Python and pandas — existing | 1.2, 3.5, 4.4, 5.6 | Use [sample_1](sample_1/README.md) to summarize 2,000 synthetic events and build an investigation timeline. |
+| 10 | [Read a network and identify attack paths](class_10_network_attack_paths/README.md) — ready | 3.1 | Label addresses, ports, protocols, and services on a diagram; explain weaknesses. |
+| 11 | [Plan network policy and wireless protection](class_11_wireless_protection/README.md) — ready | 3.2 | Review a guest-network configuration and propose policy and configuration changes. |
+| 12 | [Separate networks by purpose](class_12_network_segmentation/README.md) — ready | 3.3 | Design student, staff, guest, and server segments with a required communication table. |
+| 13 | [Read and revise firewall rules](class_13_firewall_rules/README.md) — ready | 3.4 | Predict traffic outcomes, repair an ordered ruleset, and explain edits. |
+| 14 | [Detect suspicious network activity](class_14_network_anomalies/README.md) — ready | 3.5 | Compare baseline traffic with alerts; identify leads and possible false positives. |
+| 15 | [Analyze data with Python and pandas](class_15_pandas_analysis/README.md) — ready | 1.2, 3.5, 4.4, 5.6 | Use [sample_1](sample_1/README.md) to summarize 2,000 synthetic events and build an investigation timeline. |
 
 ### Unit 4: Securing Devices
 
 | Class | Class topic | CED topic | Activity and student deliverable |
 | --- | --- | --- | --- |
-| 16 | Assess device exposure | 4.1 | Review a workstation inventory and configuration; prioritize weaknesses and explain potential damage. |
-| 17 | Design authentication and account controls | 4.2 | Compare authentication options and propose an account policy for several roles. |
-| 18 | Harden a workstation | 4.3 | Apply a local-lab checklist and document changes, validation, and remaining risks. |
-| 19 | Trace device activity | 4.4 | Correlate operating-system events, process activity, and alerts into an incident hypothesis. |
+| 16 | [Assess device exposure](class_16_device_exposure/README.md) — ready | 4.1 | Review a workstation inventory and configuration; prioritize weaknesses and explain potential damage. |
+| 17 | [Design authentication and account controls](class_17_account_controls/README.md) — ready | 4.2 | Compare authentication options and propose an account policy for several roles. |
+| 18 | [Harden a workstation](class_18_harden_workstation/README.md) — ready | 4.3 | Apply a local-lab checklist and document changes, validation, and remaining risks. |
+| 19 | [Trace device activity](class_19_trace_device_activity/README.md) — ready | 4.4 | Correlate operating-system events, process activity, and alerts into an incident hypothesis. |
 
 ### Unit 5: Securing Applications and Data
 
 | Class | Class topic | CED topic | Activity and student deliverable |
 | --- | --- | --- | --- |
-| 20 | Explain application attack paths | 5.1 | Analyze fictional input-handling examples involving injection, cross-site scripting, and buffer overflow. |
-| 21 | Set data policy and file permissions | 5.2 | Classify sample files, assign role-based access, and justify permissions. |
-| 22 | Protect stored data | 5.3 | Compare hashing and encryption; demonstrate integrity checking and symmetric encryption in a local lab. |
-| 23 | Use public and private keys | 5.4 | Diagram a secure exchange and test with disposable keys; explain signatures and key protection. |
-| 24 | Improve application defenses | 5.5 | Review an application configuration and input workflow; propose fixes and verification steps. |
-| 25 | Investigate application and data events | 5.6 | Compare application logs and file-access records; identify suspicious sequences and missing context. |
+| 20 | [Explain application attack paths](class_20_application_attacks/README.md) — ready | 5.1 | Analyze fictional input-handling examples involving injection, cross-site scripting, and buffer overflow. |
+| 21 | [Set data policy and file permissions](class_21_file_permissions/README.md) — ready | 5.2 | Classify sample files, assign role-based access, and justify permissions. |
+| 22 | [Protect stored data](class_22_protect_stored_data/README.md) — ready | 5.3 | Compare hashing and encryption; demonstrate integrity checking and symmetric encryption in a local lab. |
+| 23 | [Use public and private keys](class_23_public_private_keys/README.md) — ready | 5.4 | Diagram a secure exchange and test with disposable keys; explain signatures and key protection. |
+| 24 | [Improve application defenses](class_24_application_defenses/README.md) — ready | 5.5 | Review an application configuration and input workflow; propose fixes and verification steps. |
+| 25 | [Investigate application and data events](class_25_application_data_events/README.md) — ready | 5.6 | Compare application logs and file-access records; identify suspicious sequences and missing context. |
 
 ### Integration and exam preparation
 
 | Class | Class topic | Activity and student deliverable |
 | --- | --- | --- |
-| 26 | Team security assessment | Assign roles and assess a fictional organization across all five units; submit a risk register and mitigation plan. |
-| 27 | Investigate one device using multiple sources | Combine a policy, firewall rules, permissions, and system/application logs; submit an investigation and hardening plan. |
-| 28 | Multiple-choice practice | Complete mixed concept and evidence questions; explain answers and why alternatives fail. |
-| 29 | Timed free-response practice | Complete a device investigation in 50 minutes and review using official sample scoring guidance. |
-| 30 | Full practice exam and targeted review | Schedule full exam timing across suitable meetings; use errors to select topics for reteaching and another attempt. |
+| 26 | [Team security assessment](class_26_team_security_assessment/README.md) — ready | Assign roles and assess a fictional organization across all five units; submit a risk register and mitigation plan. |
+| 27 | [Investigate one device using multiple sources](class_27_multi_source_device_investigation/README.md) — ready | Combine a policy, firewall rules, permissions, and system/application logs; submit an investigation and hardening plan. |
+| 28 | [Multiple-choice practice](class_28_multiple_choice_practice/README.md) — ready | Complete mixed concept and evidence questions; explain answers and why alternatives fail. |
+| 29 | [Timed free-response practice](class_29_timed_free_response/README.md) — ready | Complete a device investigation in 50 minutes and review using official sample scoring guidance. |
+| 30 | [Full practice exam and targeted review](class_30_full_practice_exam/README.md) — ready | Schedule full exam timing across suitable meetings; use errors to select topics for reteaching and another attempt. |
 
 ## Existing data analysis lesson
 

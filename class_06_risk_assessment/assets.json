@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ASSET-01",
+    "name": "Student Information System (SIS)",
+    "description": "Central database containing grades, home addresses, medical alerts, and parent contacts.",
+    "cia_primary": "Confidentiality & Integrity",
+    "threat": "Unauthorized access / grade tampering",
+    "likelihood": 4,
+    "impact": 5,
+    "treatment": "Mitigate (MFA, database encryption, strict role-based access control)"
+  },
+  {
+    "id": "ASSET-02",
+    "name": "Classroom Interactive Smartboards",
+    "description": "Displays in classrooms used by teachers during instruction.",
+    "cia_primary": "Availability",
+    "threat": "Vandalism or hardware malfunction",
+    "likelihood": 2,
+    "impact": 2,
+    "treatment": "Accept / Mitigate (Standard warranty and spare units)"
+  },
+  {
+    "id": "ASSET-03",
+    "name": "Emergency Public Address & Lockdown System",
+    "description": "Campus-wide loudspeaker and automated door lockdown controller.",
+    "cia_primary": "Availability & Integrity",
+    "threat": "Power failure or network disruption during an emergency",
+    "likelihood": 2,
+    "impact": 5,
+    "treatment": "Mitigate (Uninterruptible power supply, separate offline wiring)"
+  },
+  {
+    "id": "ASSET-04",
+    "name": "Cafeteria Point of Sale (POS) Terminals",
+    "description": "Payment card readers and lunch account balance terminals.",
+    "cia_primary": "Integrity & Confidentiality",
+    "threat": "Credit card skimming or offline network drop during lunch",
+    "likelihood": 3,
+    "impact": 4,
+    "treatment": "Transfer / Mitigate (PCI-DSS compliance, encrypted card readers)"
+  }
+]

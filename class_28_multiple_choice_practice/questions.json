@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "unit": "Unit 1: Introduction to Security",
+    "prompt": "An attacker sends an urgent text message pretending to be the CEO of a company, requesting the immediate purchase of gift cards for an offsite client meeting. Which combination of social engineering attack vector and psychological lever is being exploited?",
+    "options": {
+      "A": "Vishing and scarcity",
+      "B": "Smishing and authority",
+      "C": "Phishing and social proof",
+      "D": "Whaling and familiarity"
+    },
+    "answer": "B",
+    "rationale": "Smishing is phishing delivered via SMS/text message. Posing as the CEO exploits human obedience to authority figures."
+  },
+  {
+    "id": 2,
+    "unit": "Unit 2: Securing Spaces",
+    "prompt": "Which physical security control is specifically designed to eliminate the risk of tailgating by utilizing two interlocking doors where only one door can be opened at a time?",
+    "options": {
+      "A": "Crash bollards",
+      "B": "Optical motion detectors",
+      "C": "Security vestibule (mantrap)",
+      "D": "Biometric iris scanner"
+    },
+    "answer": "C",
+    "rationale": "A security vestibule (mantrap) enforces single-person entry through interlocking doors, preventing tailgating."
+  },
+  {
+    "id": 3,
+    "unit": "Unit 3: Securing Networks",
+    "prompt": "A packet filtering firewall processes rules in sequential top-to-bottom order. Rule 1 allows all traffic from any source to port 80. Rule 2 blocks traffic from IP 198.51.100.5 to port 80. What action will the firewall take when IP 198.51.100.5 sends a packet to port 80?",
+    "options": {
+      "A": "The packet is denied because specific rules override general rules.",
+      "B": "The packet is allowed because Rule 1 matches first and remaining rules are ignored.",
+      "C": "The packet is quarantined until administrative approval.",
+      "D": "The packet is dropped by the implicit deny rule."
+    },
+    "answer": "B",
+    "rationale": "Firewalls operate on a first-match-wins principle. Because Rule 1 permits all traffic to port 80, Rule 2 is never evaluated."
+  },
+  {
+    "id": 4,
+    "unit": "Unit 4: Securing Devices",
+    "prompt": "Which security principle is violated when all employees in an accounting firm are assigned permanent Local Administrator accounts on their office workstations?",
+    "options": {
+      "A": "Defense in depth",
+      "B": "Non-repudiation",
+      "C": "Principle of Least Privilege",
+      "D": "Fail-safe defaults"
+    },
+    "answer": "C",
+    "rationale": "The Principle of Least Privilege states that accounts should only possess the minimum privileges necessary to perform daily job functions."
+  },
+  {
+    "id": 5,
+    "unit": "Unit 5: Securing Applications and Data",
+    "prompt": "A web application vulnerability allows an attacker to input raw JavaScript code into a public comment section, which then executes in the browser of any user who views the page. Which vulnerability is this?",
+    "options": {
+      "A": "SQL Injection (SQLi)",
+      "B": "Stored Cross-Site Scripting (XSS)",
+      "C": "Buffer Overflow",
+      "D": "Denial of Service (DoS)"
+    },
+    "answer": "B",
+    "rationale": "Stored XSS occurs when malicious scripts are permanently stored on the target server and executed in other users' browsers upon viewing."
+  }
+]
