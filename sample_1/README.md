@@ -1,96 +1,168 @@
-# Exercise 1: Trace Login and Firewall Events
+# Exercise 1: Trace the Digital Footprints — Login & Firewall Investigation
 
-[Back to the course README](../README.md)
+[⬅ Back to Course Roadmap](../README.md)
 
-## Goal
+> [!NOTE]
+> **Mission Briefing:** You are a junior security analyst working in a Security Operations Center (SOC). Your security monitoring system just captured **2,000 digital events** across the organization's network in a single workday. Most of it is regular employee activity—people clocking in, reading files, and going to lunch. But buried inside the noise, an unusual sequence of events took place. Your mission: uncover the timeline, analyze the clues, and write an evidence-based report!
 
-Use Python and `pandas` to summarize a realistic-sized log file, find patterns in routine activity, trace related events, and explain what the evidence does and does not show.
+---
 
-## Scenario
+## The Investigation Scenario
 
-[sample_logs.csv](sample_logs.csv) contains 2,000 synthetic records from a fictional organization's systems during the workday on September 15, 2026 (UTC). It mixes login, file-access, firewall, policy-change, and logout events. Event IDs are assigned after the records are shuffled, so sort and compare timestamps rather than relying on row order. The varied routine activity makes unusual sequences harder to spot.
+In [sample_logs.csv](sample_logs.csv), you have 2,000 records from a fictional company's network on September 15, 2026. The records include logins, logouts, file access requests, firewall blocks, and security policy changes.
 
-The records are generated reproducibly by [generate_sample_logs.py](generate_sample_logs.py). The external-looking IPs use documentation-only address ranges; all activity is fabricated for classroom practice. This is not a real security incident and must not be used to investigate public systems.
+> [!IMPORTANT]
+> **Detective Alert — Don't Trust Row Order!**
+> Different servers record events independently, and network packets arrive in batches. The records in this CSV have been shuffled. **Always sort and follow the `timestamp` column chronologically** rather than reading from top to bottom!
 
-## Files
+### Safe Training Environment
+- All data was generated automatically using [generate_sample_logs.py](generate_sample_logs.py).
+- External IP addresses use special reserved test numbers (like `203.0.113.x`).
+- Everything here is simulated for classroom practice—no real systems or private user data are involved.
 
-- [sample_logs.csv](sample_logs.csv): the input data, with 2,000 event records plus a header row.
-- [analyze_logs.py](analyze_logs.py): the pandas analyzer. It displays eight views: event type, outcome, user activity, source-IP activity, repeated failed logins, denied firewall events, hourly volume, and a timeline for IPs that meet the repeated-login threshold.
-- [generate_sample_logs.py](generate_sample_logs.py): deterministic sample-data generator. Running it overwrites `sample_logs.csv`.
-- [requirements.txt](requirements.txt): Python package dependency for the analyzer.
+---
 
-## CSV Fields
+## Evidence Files in Your Case Folder
 
-| Field | Meaning |
-| --- | --- |
-| `event_id` | Identifier for this row; it does not link related events into a session. |
-| `timestamp` | Time the event was recorded, in UTC (`Z`). |
-| `event_type` | Category, such as `login`, `file_access`, or `firewall`. |
-| `username` | Account associated with the event; `unknown` means the firewall record does not identify a user. |
-| `src_ip` | Source IP address recorded for the event. |
-| `action` | Action attempted, such as `authenticate`, `read`, or `deny`. |
-| `outcome` | Result, such as `success`, `failed`, `denied`, or `allowed`. |
-| `resource` | Target recorded in a compact form, such as `/login`, a file path, or `/tcp/22`. |
+| File | Role in the Investigation |
+| :--- | :--- |
+| [sample_logs.csv](sample_logs.csv) | **The Evidence File:** 2,000 recorded log events waiting to be investigated. |
+| [analyze_logs.py](analyze_logs.py) | **The Automated Analyzer:** A Python script using pandas that generates 8 different investigative summaries of the data. |
+| [generate_sample_logs.py](generate_sample_logs.py) | **The Generator:** Creates or resets the 2,000 practice records. Running this will overwrite the CSV with a fresh set of events. |
+| [requirements.txt](requirements.txt) | Lists required Python libraries (`pandas`). |
 
-## What Is Missing?
+---
 
-This dataset is useful for practice, but it is not enough to prove that an account or system was compromised. Identify missing context before making a conclusion:
+## Deciphering the Clues: CSV Log Fields
 
-- **Which device produced each event?** There is no hostname, device ID, or separate log-source field.
-- **What exactly happened on the network?** There are no separate destination IP, source/destination port, and protocol columns; `/tcp/22` is only a compact resource value.
-- **Why did authentication fail or succeed?** The log has no failure reason, authentication method, MFA result, session ID, or account-lockout status.
-- **Was the activity expected for this person and device?** There is no device/browser identifier, user role, normal schedule, or approved access list.
-- **Was the file access authorized?** The log does not include file sensitivity, permissions, or an authorization decision.
-- **Can events from different systems be reliably connected?** There is no shared request/session identifier or log-collection and integrity information.
+Every line in the log is a "digital footprint" containing 8 key pieces of information:
 
-Discuss how each missing detail could change the interpretation. A successful login after failed attempts is worth checking, but this data alone cannot establish who used the account or whether access was authorized.
+| Field Name | What it Represents | Real-World Analogy |
+| :--- | :--- | :--- |
+| `event_id` | Unique ID number for this specific row | An evidence tag number on an evidence bag |
+| `timestamp` | Time the event occurred in UTC (Universal Time) | A timestamp stamped on a security camera video |
+| `event_type` | Broad category: `login`, `file_access`, `firewall`, `logout`, or `policy_change` | The type of incident report |
+| `username` | The account name involved (`unknown` if blocked by firewall before login) | The name badge shown at the door |
+| `src_ip` | Source IP: the digital network address where the request came from | The return address on an envelope, or a caller ID |
+| `action` | What the user or system tried to do: `authenticate`, `read`, `modify`, `deny`, `allow` | Trying to turn a doorknob or open a drawer |
+| `outcome` | What happened: `success`, `failed`, `denied`, or `allowed` | Did the door open or remain locked? |
+| `resource` | What they targeted: `/login`, a file path (e.g. `/docs/financial_q3.xlsx`), or `/tcp/22` (SSH remote login port) | The specific room or safe someone tried to enter |
 
-## Run the Analyzer
+---
 
-From the project root, run:
+## 🔎 The Missing Clues: What the Logs DON'T Tell You
+
+In movies, a cybersecurity analyst glances at a screen for 3 seconds and yells *"I found the hacker!"* 
+
+In the real world, a good investigator knows that **logs only tell part of the story**. Jumping to conclusions without enough evidence can get an innocent person locked out of their job or leave a real threat unnoticed!
+
+Before you decide whether a real cyberattack occurred, ask yourself what critical pieces of context are missing from this log:
+
+1. **Which computer logged this?**
+   There is no hostname or computer ID. Did these events happen on a receptionist's laptop or an executive's server?
+2. **Where was the network traffic heading?**
+   We see the source IP (`src_ip`), but there is no destination IP address. Was someone connecting to a public web server or a private internal database?
+3. **Why did the login fail?**
+   Did the user type the wrong password? Was their Caps Lock on? Was their account expired, or did multi-factor authentication (MFA) reject their phone?
+4. **Is this normal behavior for this person?**
+   Does this employee usually log in at this hour? Do they work remotely or in the building?
+5. **Was file access authorized?**
+   If someone downloaded a financial spreadsheet, do company rules permit them to read that file as part of their daily job?
+6. **Are these separate events linked to the exact same human?**
+   Without a shared session ID, three failed logins and a successful login from the same IP could be two different people sharing the same household Wi-Fi router.
+
+> [!CAUTION]
+> **The Golden Rule of Cyber Defense:**
+> A spike in failed logins is an **investigation lead**, NOT automatic proof of an attack. Always separate what the data *proves* from what you *assume*!
+
+---
+
+## Running the Log Analyzer
+
+Make sure you are in the `sample_1` folder in your terminal:
 
 ```powershell
+# 1. Move into the sample_1 folder
 cd sample_1
+
+# 2. Install requirements (if not already installed)
 python -m pip install -r requirements.txt
+
+# 3. Run the log analysis tool!
 python analyze_logs.py
 ```
 
-The sample CSV is already included. To regenerate the default 2,000 records, run `python generate_sample_logs.py` from `sample_1`; it overwrites `sample_logs.csv` with the same seeded data.
+### Advanced Detective Options: Customizing Your Investigation
 
-To generate a larger or separate practice dataset:
-
-```powershell
-python generate_sample_logs.py --rows 3000 --output larger_sample.csv
-python analyze_logs.py --log-file larger_sample.csv
-```
-
-To analyze another CSV file or change the repeated-failure threshold:
+Want to run experiments with your analyzer? Try these command flags:
 
 ```powershell
-python analyze_logs.py --log-file path\to\events.csv --failed-login-threshold 4
+# Flag IPs with at least 4 failed logins instead of 3:
+python analyze_logs.py --failed-login-threshold 4
+
+# Test with your own custom log file:
+python analyze_logs.py --log-file path\to\my_logs.csv
+
+# Generate a massive dataset with 5,000 events to test your computer's speed:
+python generate_sample_logs.py --rows 5000 --output big_logs.csv
+python analyze_logs.py --log-file big_logs.csv
 ```
 
-## Student Tasks
+---
 
-Use the eight output sections to answer these questions. Support conclusions with event IDs, timestamps, and fields from the CSV.
+## Student Detective Tasks
 
-1. How many events are recorded for each event type and outcome?
-2. Which user has the most failed logins? Which user has the most total events?
-3. Which source IP addresses generated the most events, and how many distinct usernames appear for each?
-4. Which IP and username combination has at least three failed logins? What events follow those failures?
-5. Which source IP has the most denied firewall events? What resource or port was targeted?
-6. How does event volume change by hour? What limitations are there when drawing conclusions from a small sample?
-7. Choose a source IP in the repeated-failure results and trace its events in timestamp order. Which sequence deserves investigation, and what benign explanation might also fit?
-8. What additional logs or context would you request before deciding whether an account was compromised? Recommend one mitigation and explain its tradeoff.
+Run `python analyze_logs.py`. The script will output **8 numbered sections**. Use those output tables to answer the questions below. 
 
-## Facilitator Self-Check
+Make sure to support every answer with **specific numbers, timestamps, usernames, and event IDs**!
 
-Use this after attempting the questions to check that the output was read correctly:
+### Phase 1: The Big Picture (Sections 1–4)
+1. **Overview:** How many total events were recorded for each `event_type` and each `outcome`?
+2. **Top Targets:** Which username experienced the most failed logins? Which username generated the most total activity overall?
+3. **Suspicious Sources:** Which source IP addresses generated the most total traffic? How many distinct usernames were associated with each top IP?
 
-- The file contains **2,000 records**. The type counts are 765 logins, 594 file-access events, 508 firewall events, 118 logouts, and 15 policy changes.
-- The outcome counts are 1,470 successes, 437 allowed events, 77 denials, and 16 failures. These counts combine different event types, so an `allowed` firewall decision is distinct from a `success` login.
-- The user summary shows Alice with 5 failed logins overall. Grouping by both username and source IP reveals that **Alice and `203.0.113.45` have 3 failed logins**, the only pair at the default threshold.
-- That IP's timeline contains 8 events: three failed logins, a successful login, a file read, and three firewall denials for `/tcp/22`. The activity is spread across about 25 minutes, not adjacent CSV rows.
-- The hourly summary covers the 08:00 through 16:00 UTC hours. Describe peaks or quieter periods from the output rather than infer normal behavior from a single day of synthetic data.
+### Phase 2: Drilling Down on Red Flags (Sections 5–7)
+4. **Repeated Failures:** Which specific IP address and username pair had at least 3 failed logins in a row? What happened right after those failures?
+5. **Firewall Blocks:** Which source IP was blocked the most times by the firewall? What specific port or service (`resource`) was it trying to touch?
+6. **Traffic by the Hour:** In which hours did network traffic peak? Why should an analyst be careful when trying to define "normal" behavior based on just one single day of records?
 
-The expected conclusion is **a pattern that needs investigation, not proof of an attack**. A strong response separates observed facts from assumptions, names useful missing evidence, and considers a reasonable benign explanation.
+### Phase 3: Crime Scene Reconstruction (Section 8)
+7. **Trace the Timeline:** Pick the flagged IP from Section 8 and follow its events chronologically:
+   - What sequence of actions did this IP take from start to finish?
+   - What makes this sequence look suspicious?
+   - What is a possible **innocent / benign explanation** that could also explain this exact same sequence?
+
+### Phase 4: Final Case Report
+8. **Next Steps & Tradeoffs:**
+   - What 2 additional pieces of evidence or log sources would you request before declaring an official security incident?
+   - Propose **one mitigation** (security rule or policy change) to protect the system.
+   - Explain one **tradeoff** of your mitigation: could it accidentally inconvenience real employees or slow down legitimate business?
+
+---
+
+## Detective Self-Check & Answer Key
+
+After you have attempted the questions, use this guide to verify your findings:
+
+- **Total Counts (Sections 1 & 2):**
+  - Exactly **2,000 records** total.
+  - Types: **765** logins, **594** file accesses, **508** firewall checks, **118** logouts, and **15** policy changes.
+  - Outcomes: **1,470** successes, **437** allowed, **77** denied, and **16** failures. *(Note: Firewall blocks show as `denied`, while bad logins show as `failed`).*
+- **User Activity (Section 3):**
+  - User `alice` has **5 failed logins** across the entire day.
+- **The Flagged IP (Sections 5 & 8):**
+  - IP `203.0.113.45` targeting user `alice` is the **only pair** that triggered the default threshold with **3 failed logins**.
+- **The Timeline Clues (Section 8):**
+  - Across a span of roughly 25 minutes, `203.0.113.45`:
+    1. Fails to log into `alice` 3 consecutive times (`authenticate` / `failed`).
+    2. Successfully logs in as `alice` on the 4th attempt (`authenticate` / `success`).
+    3. Reads a document (`file_access` / `read` / `allowed`).
+    4. Triggers 3 firewall blocks trying to connect to `/tcp/22` (SSH remote shell port).
+- **The Verdict:**
+  - *Suspicious theory:* An external attacker guessed Alice's password, logged in, viewed a file, and then tried to scan or open an SSH terminal to gain deeper control of the network.
+  - *Innocent theory:* Alice was working from a hotel or coffee shop, mistyped her password three times, logged in successfully, checked her work file, and her laptop's background backup software attempted to sync over SSH port 22, which the office firewall blocked.
+  - A top-scoring report explains **both possibilities** and recommends gathering firewall destination logs and asking Alice before taking drastic action!
+
+---
+
+[⬅ Return to Course Roadmap](../README.md) | [Go to Exercise 0: pandas Warm-up ➡](../sample_0/README.md)
