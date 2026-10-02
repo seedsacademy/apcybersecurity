@@ -8,7 +8,7 @@ The roadmap follows the five units in the [College Board Course and Exam Descrip
 
 Each row is a separate class topic to develop. A topic may take multiple meetings for instruction, practice, and assessment. This is a course roadmap, not a plan to complete the full course in 30 periods. Adjust pacing to the schedule and student needs.
 
-**Existing lesson:** [Data Analysis: Trace Login and Firewall Events](sample_1/README.md). All other classes below are planned.
+**Existing lessons:** [Introduction to pandas](sample_0/README.md) (warm-up) and [Data Analysis: Trace Login and Firewall Events](sample_1/README.md). All other classes below are planned.
 
 ## Separate class topics
 
